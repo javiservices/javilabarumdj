@@ -12,6 +12,7 @@ services:
       - ./storage:/var/www/storage
       - ./bootstrap/cache:/var/www/bootstrap/cache
       - ./.env:/var/www/.env
+      - ./resources:/var/www/resources
     networks:
       - javilabarum
     environment:
