@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMessage;
+use App\Mail\ContactConfirmation;
 
 class ContactController extends Controller
 {
@@ -23,9 +24,22 @@ class ContactController extends Controller
             'message' => 'required|string|max:5000',
         ]);
 
-        // Por ahora, guardar en logs (después puedes configurar email real)
-        \Log::info('Nuevo mensaje de contacto', $validated);
+        try {
+            // 1. Enviar email al admin (booking@javilabarumdj.com)
+            Mail::to(config('mail.from.address'))
+                ->send(new ContactMessage($validated));
 
-        return back()->with('success', '¡Mensaje enviado con éxito! Te responderé lo antes posible.');
+            // 2. Enviar email de confirmación al usuario
+            Mail::to($validated['email'])
+                ->send(new ContactConfirmation($validated));
+
+            // Guardar en logs para backup
+            \Log::info('Nuevo mensaje de contacto', $validated);
+
+            return redirect()->route('contact.show')->with('success', 'mensaje_enviado');
+        } catch (\Exception $e) {
+            \Log::error('Error al enviar mensaje de contacto: ' . $e->getMessage());
+            return back()->with('error', 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')->withInput();
+        }
     }
 }

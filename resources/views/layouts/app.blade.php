@@ -220,8 +220,8 @@
         </div>
     </nav>
 
-    <!-- Alerts -->
-    @if(session('success'))
+    <!-- Alerts (solo para páginas que no tienen su propio diseño de alertas) -->
+    @if(session('success') && !Request::is('contacto'))
     <div class="container mx-auto px-4 mt-4">
         <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded" role="alert">
             <p class="font-bold">¡Éxito!</p>
@@ -230,7 +230,7 @@
     </div>
     @endif
 
-    @if(session('error'))
+    @if(session('error') && !Request::is('contacto'))
     <div class="container mx-auto px-4 mt-4">
         <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
             <p class="font-bold">Error</p>

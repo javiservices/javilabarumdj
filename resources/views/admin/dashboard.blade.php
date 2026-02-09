@@ -80,6 +80,62 @@
         </a>
     </div>
 
+    <!-- Google Calendar Integration -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8 border-l-4 border-blue-500">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h2 class="text-2xl font-bold heading-font mb-2">
+                    <i class="fab fa-google text-red-500 mr-2"></i>
+                    Sincronización con Google Calendar
+                </h2>
+                <p class="text-gray-600">Importa eventos desde tu Google Calendar o sincroniza automáticamente</p>
+            </div>
+            @if($isGoogleConnected)
+                <span class="px-4 py-2 bg-green-100 text-green-700 rounded-full font-semibold">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Conectado
+                </span>
+            @else
+                <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-semibold">
+                    <i class="fas fa-times-circle mr-2"></i>
+                    Desconectado
+                </span>
+            @endif
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+            @if($isGoogleConnected)
+                <form action="{{ route('google.import') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105">
+                        <i class="fas fa-sync-alt mr-2"></i>
+                        Importar Eventos desde Google
+                    </button>
+                </form>
+                <p class="text-sm text-gray-500 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Los eventos creados aquí se sincronizan automáticamente con tu Google Calendar
+                </p>
+            @else
+                <a href="{{ route('google.auth') }}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105">
+                    <i class="fab fa-google mr-2"></i>
+                    Conectar con Google Calendar
+                </a>
+                <div class="w-full mt-2">
+                    <p class="text-sm text-gray-600">
+                        <strong>Ventajas de conectar:</strong>
+                    </p>
+                    <ul class="text-sm text-gray-600 list-disc list-inside mt-2 space-y-1">
+                        <li>Importa eventos automáticamente desde tu Google Calendar</li>
+                        <li>Los eventos creados aquí se sincronizan con Google</li>
+                        <li>Actualiza eventos en ambos lugares simultáneamente</li>
+                        <li>Recibe notificaciones en tu móvil</li>
+                    </ul>
+                </div>
+            @endif
+        </div>
+    </div>
+
     <!-- Events Management -->
     <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
         <div class="flex justify-between items-center mb-6">

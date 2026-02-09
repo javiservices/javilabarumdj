@@ -26,12 +26,6 @@
                 <i class="far fa-calendar-alt mr-2"></i>
                 Ver Calendario
             </a>
-            @if(isset($isGoogleAuthenticated) && !$isGoogleAuthenticated)
-                <a href="{{ route('google.auth') }}" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full transition transform hover:scale-105">
-                    <i class="fab fa-google mr-2"></i>
-                    Conectar Google
-                </a>
-            @endif
         </div>
     </div>
 

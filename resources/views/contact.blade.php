@@ -120,16 +120,57 @@
                     <h2 class="text-3xl font-bold heading-font gradient-text mb-6">Envíame un Mensaje</h2>
                     
                     @if(session('success'))
-                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded mb-6">
-                            <p class="font-bold">¡Mensaje Enviado!</p>
-                            <p>{{ session('success') }}</p>
+                        <div class="bg-gradient-to-r from-emerald-700 to-amber-600 border-l-4 border-amber-400 text-white p-6 rounded-lg mb-6 shadow-xl">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4 flex-1">
+                                    <p class="font-bold text-xl mb-2">🎉 ¡Mensaje Enviado con Éxito!</p>
+                                    <p class="text-white text-base mb-2">
+                                        Gracias por contactar. He recibido tu mensaje y te responderé lo antes posible (normalmente en menos de 24 horas).
+                                    </p>
+                                    <p class="text-white text-sm opacity-90">
+                                        📧 Te he enviado un email de confirmación a <strong>{{ old('email') }}</strong>
+                                    </p>
+                                    <div class="mt-4 pt-4 border-t border-white border-opacity-30">
+                                        <p class="text-sm">💬 <strong>¿Booking urgente?</strong> Escríbeme por WhatsApp:</p>
+                                        <a href="https://wa.me/34622323976" class="inline-block mt-2 bg-white text-emerald-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-100 transition transform hover:scale-105">
+                                            <i class="fab fa-whatsapp mr-2"></i>+34 622 323 976
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="bg-red-900 border-l-4 border-red-500 text-white p-6 rounded-lg mb-6 shadow-xl">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-xl mb-2">Error al Enviar</p>
+                                    <p>{{ session('error') }}</p>
+                                    <p class="mt-3 text-sm">Intenta contactarme directamente por WhatsApp o email:</p>
+                                    <div class="mt-2 space-x-3">
+                                        <a href="https://wa.me/34622323976" class="text-white underline">WhatsApp</a>
+                                        <a href="mailto:booking@javilabarumdj.com" class="text-white underline">Email</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     @endif
 
                     @if($errors->any())
-                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded mb-6">
-                            <p class="font-bold">Error</p>
-                            <ul class="list-disc list-inside">
+                        <div class="bg-red-900 border-l-4 border-red-500 text-white p-6 rounded-lg mb-6 shadow-xl">
+                            <p class="font-bold text-xl mb-3">Por favor, corrige los siguientes errores:</p>
+                            <ul class="list-disc list-inside space-y-1">
                                 @foreach($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
@@ -178,7 +219,7 @@
                                 name="phone" 
                                 value="{{ old('phone') }}"
                                 class="w-full px-4 py-3 bg-slate-700 border border-emerald-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
-                                placeholder="+34 622 323 976">
+                                placeholder="+34 612 345 678">
                         </div>
 
                         <div>
