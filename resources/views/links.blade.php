@@ -84,7 +84,7 @@
                     <img src="{{ asset('logo_white.png') }}" alt="Javi Labarum DJ - Afro Latin Tech House" class="h-32 mx-auto">
                 </div>
                 <h1 class="sr-only">Javi Labarum DJ - Afro Latin Tech House | Links y Redes Sociales</h1>
-                <div class="text-center mb-8">
+                <div class="text-center">
                     <p class="text-amber-300 text-lg font-semibold mb-1">Afro Latin Tech House</p>
                     <p class="text-emerald-200 text-sm opacity-90">🔥 Ritmos que hacen vibrar la pista 🔥</p>
                 </div>
