@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+
+Sitemap: http://localhost:8000/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
