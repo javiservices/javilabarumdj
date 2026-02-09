@@ -84,6 +84,10 @@
                     <img src="{{ asset('logo_white.png') }}" alt="Javi Labarum DJ - Afro Latin Tech House" class="h-32 mx-auto">
                 </div>
                 <h1 class="sr-only">Javi Labarum DJ - Afro Latin Tech House | Links y Redes Sociales</h1>
+                <div class="text-center mb-8">
+                    <p class="text-amber-300 text-lg font-semibold mb-1">Afro Latin Tech House</p>
+                    <p class="text-emerald-200 text-sm opacity-90">🔥 Ritmos que hacen vibrar la pista 🔥</p>
+                </div>
             </div>
         </div>
     </section>
@@ -91,16 +95,6 @@
     <!-- Links Section -->
     <div class="py-12 bg-slate-950">
         <div class="max-w-md w-full mx-auto px-4">
-        <!-- Profile Section -->
-        <div class="text-center mb-8">
-            <div class="rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                <img src="{{ asset('logo_white.png') }}" alt="Javi Labarum DJ" class="h-24">
-            </div>
-            <h1 class="text-4xl font-bold text-white mb-2 sr-only">JAVI LABARUM DJ</h1>
-            <p class="text-amber-300 text-lg font-semibold mb-1">Afro Latin Tech House</p>
-            <p class="text-emerald-200 text-sm opacity-90">🔥 Ritmos que hacen vibrar la pista 🔥</p>
-        </div>
-
         <!-- Social Links -->
         <div class="space-y-4">
             @forelse($socialLinks as $link)

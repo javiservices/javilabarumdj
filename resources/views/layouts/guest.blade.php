@@ -26,38 +26,112 @@
         <style>
             body {
                 font-family: 'Poppins', sans-serif;
-                background: linear-gradient(135deg, #1a4d2e 0%, #d4af37 100%);
+                background: linear-gradient(135deg, #0f172a 0%, #1a4d2e 50%, #d4af37 100%);
+                min-height: 100vh;
+                position: relative;
+                overflow-x: hidden;
+            }
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: 
+                    radial-gradient(circle at 20% 50%, rgba(26, 77, 46, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 50%);
+                pointer-events: none;
+                z-index: 0;
             }
             .heading-font {
                 font-family: 'Montserrat', sans-serif;
             }
             .gradient-text {
-                background: linear-gradient(135deg, #2d5016 0%, #d4af37 100%);
+                background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
             }
+            .login-card {
+                background: rgba(15, 23, 42, 0.8);
+                backdrop-filter: blur(20px);
+                border: 2px solid rgba(212, 175, 55, 0.3);
+                box-shadow: 
+                    0 20px 60px rgba(0, 0, 0, 0.5),
+                    0 0 40px rgba(212, 175, 55, 0.2);
+                transition: all 0.3s ease;
+            }
+            .login-card:hover {
+                border-color: rgba(212, 175, 55, 0.5);
+                box-shadow: 
+                    0 20px 60px rgba(0, 0, 0, 0.6),
+                    0 0 50px rgba(212, 175, 55, 0.3);
+            }
+            .input-field {
+                background: rgba(26, 77, 46, 0.2);
+                border: 2px solid rgba(212, 175, 55, 0.3);
+                transition: all 0.3s ease;
+            }
+            .input-field:focus {
+                background: rgba(26, 77, 46, 0.4);
+                border-color: #d4af37;
+                box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            }
+            .btn-primary {
+                background: linear-gradient(135deg, #1a4d2e 0%, #2d6e3f 100%);
+                border: 2px solid #d4af37;
+                color: #d4af37;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .btn-primary::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(212, 175, 55, 0.2);
+                transform: translate(-50%, -50%);
+                transition: width 0.6s, height 0.6s;
+            }
+            .btn-primary:hover::before {
+                width: 300px;
+                height: 300px;
+            }
+            .btn-primary:hover {
+                background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+                color: #0f172a;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+            }
+            .content-wrapper {
+                position: relative;
+                z-index: 1;
+            }
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-            <div class="mb-6">
-                <a href="/" class="text-white">
-                    <div class="w-40 h-40 bg-slate-900 border-4 border-amber-500 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition transform mx-auto">
-                        <img src="{{ asset('logo_white.png') }}" alt="Javi Labarum DJ" class="h-24">
-                    </div>
-                    <h1 class="text-3xl font-bold heading-font text-white text-center mt-4">JAVI LABARUM DJ</h1>
-                    <p class="text-amber-300 text-center mt-2 font-semibold">Afro Latin Tech House</p>
+    <body class="font-sans text-gray-100 antialiased">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 px-4 content-wrapper">
+            <div class="mb-8">
+                <a href="/" class="block text-center">
+                    <img src="{{ asset('logo_white.png') }}" alt="Javi Labarum DJ" class="h-20 sm:h-24 mx-auto hover:scale-105 transition-all duration-300">
+                    <h1 class="sr-only">JAVI LABARUM DJ</h1>
+                    <p class="text-amber-400 text-center mt-4 font-semibold tracking-wide text-sm sm:text-base">Afro Latin Tech House</p>
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md px-6 py-8 bg-slate-900 border-2 border-amber-600 shadow-2xl overflow-hidden sm:rounded-2xl">
+            <div class="w-full sm:max-w-md login-card px-8 py-10 overflow-hidden rounded-3xl">
                 {{ $slot }}
             </div>
             
-            <div class="mt-6 text-center">
-                <a href="{{ url('/') }}" class="text-emerald-200 hover:text-white transition">
-                    <i class="fas fa-arrow-left mr-2"></i>Volver al inicio
+            <div class="mt-8 text-center">
+                <a href="{{ url('/') }}" class="inline-flex items-center text-amber-300 hover:text-amber-400 transition-all duration-300 font-medium group">
+                    <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
+                    <span>Volver al inicio</span>
                 </a>
             </div>
         </div>
